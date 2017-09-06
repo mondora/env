@@ -1,0 +1,45 @@
+{
+  "name": "@mondora/env",
+  "version": "0.0.0",
+  "description": "A better way to retrieve environment variables",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "precommit": "npm run lint",
+    "compile": "tsc",
+    "prettier": "prettier src/**/*.ts test/**/*.ts",
+    "prettify": "npm run prettier -- --write",
+    "lint:prettier": "npm run prettier -- --list-different",
+    "lint:ts-lint": "tslint src/**/*.ts test/**/*.ts",
+    "lint": "npm run lint:prettier && npm run lint:ts-lint",
+    "test": "NODE_ENV=test mocha --compilers ts:ts-node/register --recursive --timeout 5000",
+    "coverage": "nyc -r html -r lcov -r text-summary --extension .ts npm test",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mondora/env.git"
+  },
+  "author": "Paolo Scanferla <paolo.scanferla@mondora.com>",
+  "homepage": "https://github.com/mondora/env",
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.0.26",
+    "chai": "^4.1.2",
+    "coveralls": "^2.13.1",
+    "husky": "^0.14.3",
+    "mocha": "^3.5.0",
+    "nyc": "^11.2.0",
+    "prettier": "^1.6.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {}
+}
