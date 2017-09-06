@@ -11,12 +11,10 @@ deploy:
   api_key: $NPM_TOKEN
   on:
     tags: true
-
-before_deploy:
-  - yarn install
-  - yarn compile
+  skip_cleanup: true
 
 script:
   - yarn lint
   - yarn coverage
   - yarn coveralls
+  - yarn compile
