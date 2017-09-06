@@ -1,6 +1,6 @@
 {
   "name": "@mondora/env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A better way to retrieve environment variables",
   "license": "MIT",
   "main": "./lib/index.js",
