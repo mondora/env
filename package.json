@@ -7,7 +7,6 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "precommit": "npm run lint",
-    "prepublish": "npm run compile",
     "compile": "tsc",
     "prettier": "prettier src/**/*.ts test/**/*.ts",
     "prettify": "npm run prettier -- --write",
