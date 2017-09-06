@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/@mondora/env.svg)]()
+[![npm](https://img.shields.io/npm/v/@mondora/env.svg)](https://www.npmjs.com/package/@mondora/env)
 [![Build Status](https://travis-ci.org/mondora/env.svg?branch=master)](https://travis-ci.org/mondora/env)
 [![Coverage Status](https://img.shields.io/coveralls/mondora/env.svg)](https://coveralls.io/r/mondora/env?branch=master)
 [![Dependency Status](https://david-dm.org/mondora/env.svg)](https://david-dm.org/mondora/env)
@@ -7,6 +7,17 @@
 # env
 
 A better way to retrieve environment variables in nodejs.
+
+Features:
+
+- set defaults for environment variables
+- throw an (intelligible) error if a required environment variable is not set
+- parse environment variables before returning them (eg, parse a base64 string
+  into a Buffer)
+- for TypeScript, get the correct type information for the variable:
+  - get the correct parsed type when a `parse` function is used
+  - if a variable is required, or has a default , its type will be `T`, not
+    `T | undefined`
 
 ## Install
 
