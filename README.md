@@ -51,7 +51,7 @@ Retrieves the specified environment variable.
 The value of the environment variable, parsed by the `options.parse` function
 if specified.
 
-## Develop
+## Develop
 
 To get started developing the library, clone the project and install
 dependencies with [`yarn`](https://yarnpkg.com/). Then you can either:
