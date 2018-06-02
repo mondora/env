@@ -11,6 +11,7 @@ A better way to retrieve environment variables in nodejs.
 Features:
 
 - set defaults for environment variables
+- set defaults for environment variables only when `NODE_ENV != production`
 - throw an (intelligible) error if a required environment variable is not set
 - parse environment variables before returning them (eg, parse a base64 string
   into a Buffer)
@@ -22,7 +23,7 @@ Features:
 ## Install
 
 ```sh
-npm install @mondora/env
+yarn add @mondora/env
 ```
 
 ## Usage
@@ -31,10 +32,14 @@ npm install @mondora/env
 import env from "@mondora/env";
 
 export const REQUIRED = env("REQUIRED", { required: true });
+export const REQUIRED_ONLY_IN_PRODUCTION = env("REQUIRED_ONLY_IN_PRODUCTION", {
+    required: true,
+    nonProductionDefault: "DEFAULT"
+});
 export const NON_REQUIRED = env("NON_REQUIRED");
 export const WITH_DEFAULT = env("WITH_DEFAULT", { default: "DEFAULT" });
 // PARSED is a Buffer
-export const PARSED = env("TO_PARSE", {
+export const PARSED = env("TO_BE_PARSE", {
     required: true,
     parse: value => Buffer.from(value)
 });
@@ -52,6 +57,7 @@ Retrieves the specified environment variable.
 - `options` **object**:
   - `required` **boolean**: marks the variable as required. Ie, if
     the variable is not set, an error is thrown
+  - `nonProductionDefault` **boolean**: makes a required variable only required when `NODE_ENV == production`, while giving it a default value otherwise
   - `default` **string**: a default value for the variable if it's
     not set
   - `parse` **function**: a function to transform the value of the variable

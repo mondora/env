@@ -1,17 +1,12 @@
 {
-    "include": [
-        "src/**/*.ts"
-    ],
+    "include": ["src/**/*.ts"],
     "compilerOptions": {
         "target": "ES2017",
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "lib",
         "declaration": true,
-        "rootDirs": [
-            "src",
-            "test"
-        ],
+        "rootDirs": ["src", "test"],
         "pretty": true,
         "noEmitOnError": true,
         "sourceMap": true,
