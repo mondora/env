@@ -1,3 +1,11 @@
+## 1.2.0 (June 3, 2018)
+
+Features:
+
+- allow specifying a `parse` function even when the variable is not required and
+  doesn't have a default (when the variable is not set, the function is not
+  called)
+
 ## 1.1.2 (June 2, 2018)
 
 Features:
