@@ -1,10 +1,12 @@
-## 1.1.0 (June 2, 2018)
+## 1.1.1 (June 2, 2018)
 
 Features:
 
 - `nonProductionDefault` option to set a default value for required variables
   when `NODE_ENV != production`
 - runtime checking of options
+
+## 1.1.0 (June 2, 2018 - bad npm publication with travis)
 
 ## 1.0.4 (September 6, 2017)
 
