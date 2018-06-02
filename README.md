@@ -12,13 +12,10 @@ Features:
 
 - set defaults for environment variables
 - set defaults for environment variables only when `NODE_ENV != production`
-- throw an (intelligible) error if a required environment variable is not set
+- throw an error if a required environment variable is not set
 - parse environment variables before returning them (eg, parse a base64 string
   into a Buffer)
-- for TypeScript, get the correct type information for the variable:
-  - get the correct parsed type when a `parse` function is used
-  - if a variable is required, or has a default , its type will be `T`, not
-    `T | undefined`
+- for TypeScript, get the correct type information for the variable
 
 ## Install
 
@@ -39,7 +36,7 @@ export const REQUIRED_ONLY_IN_PRODUCTION = env("REQUIRED_ONLY_IN_PRODUCTION", {
 export const NON_REQUIRED = env("NON_REQUIRED");
 export const WITH_DEFAULT = env("WITH_DEFAULT", { default: "DEFAULT" });
 // PARSED is a Buffer
-export const PARSED = env("TO_BE_PARSE", {
+export const PARSED = env("TO_BE_PARSED", {
   required: true,
   parse: value => Buffer.from(value)
 });
