@@ -1,8 +1,8 @@
 [![npm](https://img.shields.io/npm/v/@mondora/env.svg)](https://www.npmjs.com/package/@mondora/env)
 [![Build Status](https://travis-ci.org/mondora/env.svg?branch=master)](https://travis-ci.org/mondora/env)
 [![Coverage Status](https://img.shields.io/coveralls/mondora/env.svg)](https://coveralls.io/r/mondora/env?branch=master)
-[![Dependency Status](https://david-dm.org/mondora/env.svg)](https://david-dm.org/mondora/env)
-[![devDependency Status](https://david-dm.org/mondora/env/dev-status.svg)](https://david-dm.org/mondora/env#info=devDependencies)
+[![Dependencies Status](https://david-dm.org/mondora/env.svg)](https://david-dm.org/mondora/env)
+[![Dev Dependencies Status](https://david-dm.org/mondora/env/dev-status.svg)](https://david-dm.org/mondora/env#info=devDependencies)
 
 # env
 
@@ -33,15 +33,15 @@ import env from "@mondora/env";
 
 export const REQUIRED = env("REQUIRED", { required: true });
 export const REQUIRED_ONLY_IN_PRODUCTION = env("REQUIRED_ONLY_IN_PRODUCTION", {
-    required: true,
-    nonProductionDefault: "DEFAULT"
+  required: true,
+  nonProductionDefault: "DEFAULT"
 });
 export const NON_REQUIRED = env("NON_REQUIRED");
 export const WITH_DEFAULT = env("WITH_DEFAULT", { default: "DEFAULT" });
 // PARSED is a Buffer
 export const PARSED = env("TO_BE_PARSE", {
-    required: true,
-    parse: value => Buffer.from(value)
+  required: true,
+  parse: value => Buffer.from(value)
 });
 ```
 
@@ -55,18 +55,18 @@ Retrieves the specified environment variable.
 
 - `name` **string** _required_: name of the environment variable to retrieve
 - `options` **object**:
-  - `required` **boolean**: marks the variable as required. Ie, if
-    the variable is not set, an error is thrown
-  - `nonProductionDefault` **boolean**: makes a required variable only required when `NODE_ENV == production`, while giving it a default value otherwise
-  - `default` **string**: a default value for the variable if it's
-    not set
-  - `parse` **function**: a function to transform the value of the variable
-    (a string) into whatever before it's returned by `env`
+  - `required` **boolean**: marks the variable as required. Ie, if the variable
+    is not set, an error is thrown
+  - `nonProductionDefault` **boolean**: makes a required variable only required
+    when `NODE_ENV == production`, while giving it a default value otherwise
+  - `default` **string**: a default value for the variable if it's not set
+  - `parse` **function**: a function to transform the value of the variable (a
+    string) into whatever before it's returned by `env`
 
 ##### Returns
 
-The value of the environment variable, parsed by the `options.parse` function
-if specified.
+The value of the environment variable, parsed by the `options.parse` function if
+specified.
 
 ## Develop
 
@@ -86,15 +86,15 @@ dependencies with [`yarn`](https://yarnpkg.com/). Then you can either:
 
 ## Release
 
-* Run `npm version x.x.x` to bump a new version of the package. The command
-  will set the specified version number in `package.json`, commit the change,
-  tag the commit with `vx.x.x`
+- Run `npm version x.x.x` to bump a new version of the package. The command will
+  set the specified version number in `package.json`, commit the change, tag the
+  commit with `vx.x.x`
 
-* Push the commit and the tag to github: `git push --tags origin master`
+- Push the commit and the tag to github: `git push --tags origin master`
 
-* If linting and automated tests pass, the module will automatically be
+- If linting and automated tests pass, the module will automatically be
   published to npm
 
 > **Note**: you can use convenience commands `npm version major`,
-> `npm version minor`, `npm version patch` to bump the consecutive
-> major / minor / patch version of the package.
+> `npm version minor`, `npm version patch` to bump the consecutive major / minor
+> / patch version of the package.
