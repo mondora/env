@@ -1,4 +1,4 @@
-## 1.1.1 (June 2, 2018)
+## 1.1.2 (June 2, 2018)
 
 Features:
 
@@ -6,7 +6,7 @@ Features:
   when `NODE_ENV != production`
 - runtime checking of options
 
-## 1.1.0 (June 2, 2018 - bad npm publication with travis)
+## 1.1.(0-1) (June 2, 2018 - bad npm publications)
 
 ## 1.0.4 (September 6, 2017)
 
