@@ -58,7 +58,8 @@ Retrieves the specified environment variable.
     when `NODE_ENV == production`, while giving it a default value otherwise
   - `default` **string**: a default value for the variable if it's not set
   - `parse` **function**: a function to transform the value of the variable (a
-    string) into whatever before it's returned by `env`
+    string) into whatever before it's returned by `env`. The function is called
+    only when a value or a default value for the variable was set
 
 ##### Returns
 

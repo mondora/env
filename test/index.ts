@@ -132,6 +132,20 @@ describe("The env function", () => {
     });
 
     describe("when `parse` option is set, returns parse(value)", () => {
+        it("case: with no options, variable not defined", () => {
+            const value = env("UNDEFINED_BASE64", {
+                parse: v => Buffer.from(v, "base64")
+            });
+            expect(value).to.equal(undefined);
+        });
+
+        it("case: with no options, variable not defined", () => {
+            const value = env("BASE64", {
+                parse: v => Buffer.from(v, "base64")
+            });
+            expect(value).to.deep.equal(Buffer.from("BASE64"));
+        });
+
         it("case: with `required` option", () => {
             const value = env("BASE64", {
                 required: true,
@@ -140,7 +154,7 @@ describe("The env function", () => {
             expect(value).to.deep.equal(Buffer.from("BASE64"));
         });
 
-        it("case: with `required` and `nonDefaultValue` options, NODE_ENV != production", () => {
+        it("case: with `required` and `nonDefaultValue` options, NODE_ENV != production, variable not defined", () => {
             const value = env("UNDEFINED_BASE64", {
                 required: true,
                 // String NON_PRODUCTION_DEFAULT in base64

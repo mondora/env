@@ -1,15 +1,17 @@
-export interface IRequiredOptions<T> {
-    required: true;
-    nonProductionDefault?: string;
+export interface IBaseOptions<T> {
     parse?: (value: string) => T;
 }
-export interface IDefaultOptions<T> {
+export interface IRequiredOptions<T> extends IBaseOptions<T> {
+    required: true;
+    nonProductionDefault?: string;
+}
+export interface IDefaultOptions<T> extends IBaseOptions<T> {
     default: string;
-    parse?: (value: string) => T;
 }
 
 function env<T = string>(name: string, options: IRequiredOptions<T>): T;
 function env<T = string>(name: string, options: IDefaultOptions<T>): T;
+function env<T = string>(name: string, options: IBaseOptions<T>): T | undefined;
 function env(name: string): string | undefined;
 function env(name: string, options: any = {}) {
     // Validate input parameters
@@ -46,10 +48,12 @@ function env(name: string, options: any = {}) {
     }
 
     // Get the value or one of the defaults
-    const valueOrDefault =
+    const valueOrDefaultOrUndefined =
         inputValue || options.default || options.nonProductionDefault;
 
     // Return the possibly-parsed value
-    return options.parse ? options.parse(valueOrDefault) : valueOrDefault;
+    return options.parse && valueOrDefaultOrUndefined
+        ? options.parse(valueOrDefaultOrUndefined)
+        : valueOrDefaultOrUndefined;
 }
 export default env;
