@@ -28,7 +28,7 @@
     "lint": "yarn lint:prettier && yarn lint:tslint",
     "test": "NODE_ENV=test mocha --exit -r ts-node/register --watch-extensions ts 'test/**/*.ts'",
     "coverage": "nyc --all yarn test",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "publish-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {},
   "devDependencies": {

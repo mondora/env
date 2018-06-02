@@ -1,5 +1,5 @@
-[![npm](https://img.shields.io/npm/v/@mondora/env.svg)](https://www.npmjs.com/package/@mondora/env)
-[![Build Status](https://travis-ci.org/mondora/env.svg?branch=master)](https://travis-ci.org/mondora/env)
+[![Package Version](https://img.shields.io/npm/v/@mondora/env.svg)](https://www.npmjs.com/package/@mondora/env)
+[![Build Status](https://img.shields.io/circleci/project/github/mondora/env.svg)](https://circleci.com/gh/mondora/env)
 [![Coverage Status](https://img.shields.io/coveralls/mondora/env.svg)](https://coveralls.io/r/mondora/env?branch=master)
 [![Dependencies Status](https://david-dm.org/mondora/env.svg)](https://david-dm.org/mondora/env)
 [![Dev Dependencies Status](https://david-dm.org/mondora/env/dev-status.svg)](https://david-dm.org/mondora/env#info=devDependencies)
