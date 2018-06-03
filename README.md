@@ -69,8 +69,8 @@ specified.
 
 ### setInputSource(inputSource)
 
-Sets the input source from which environment variables are retrieved (by default
-it's `process.env`).
+Sets the input source from which environment variables are retrieved (the
+default input source is `process.env`).
 
 ##### Arguments
 
