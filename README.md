@@ -15,6 +15,7 @@ Features:
 - throw an error if a required environment variable is not set
 - parse environment variables before returning them (eg, parse a base64 string
   into a Buffer)
+- get environment variables from a different source than `process.env`
 - for TypeScript, get the correct type information for the variable
 
 ## Install
@@ -65,6 +66,19 @@ Retrieves the specified environment variable.
 
 The value of the environment variable, parsed by the `options.parse` function if
 specified.
+
+### setInputSource(inputSource)
+
+Sets the input source from which environment variables are retrieved (by default
+it's `process.env`).
+
+##### Arguments
+
+- `inputSource` **(string, string) map** _required_: custom input source
+
+##### Returns
+
+Nothing.
 
 ## Develop
 

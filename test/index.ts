@@ -1,16 +1,17 @@
 import { expect } from "chai";
 
-import env from "../src";
+import env, { setInputSource } from "../src";
 
 describe("The env function", () => {
     beforeEach(() => {
-        process.env = {
+        setInputSource({
             DEFINED: "DEFINED",
             UNDEFINED: undefined,
+            EMPTY_STRING: "",
             // String BASE64 in base64
             BASE64: "QkFTRTY0",
             UNDEFINED_BASE64: undefined
-        };
+        });
     });
 
     describe("validates input parameters", () => {
@@ -45,6 +46,11 @@ describe("The env function", () => {
             expect(value).to.equal("DEFINED");
         });
 
+        it("case: empty string", () => {
+            const value = env("EMPTY_STRING");
+            expect(value).to.equal("");
+        });
+
         it("case: undefined variable", () => {
             const value = env("UNDEFINED");
             expect(value).to.equal(undefined);
@@ -66,6 +72,12 @@ describe("The env function", () => {
                 process.env.NODE_ENV = "production";
                 const value = env("DEFINED", { required: true });
                 expect(value).to.equal("DEFINED");
+            });
+
+            it("case: NODE_ENV == production, no `nonProductionDefault` options set, and the variable value is the empty string", () => {
+                process.env.NODE_ENV = "production";
+                const value = env("EMPTY_STRING", { required: true });
+                expect(value).to.equal("");
             });
 
             it("case: NODE_ENV != production and `nonProductionDefault` option set", () => {
@@ -181,5 +193,21 @@ describe("The env function", () => {
             });
             expect(value).to.deep.equal(Buffer.from("DEFAULT"));
         });
+
+        it("case: with empty string", () => {
+            const value = env("EMPTY_STRING", {
+                parse: v => (v === "" ? "EMPTY_STRING" : "NON_EMPTY_STRING")
+            });
+            expect(value).to.equal("EMPTY_STRING");
+        });
+    });
+});
+
+describe("The setInputSource function", () => {
+    it("changes the input source from which to retrieve variables", () => {
+        setInputSource({ VARIABLE: "VALUE_0" });
+        expect(env("VARIABLE")).to.equal("VALUE_0");
+        setInputSource({ VARIABLE: "VALUE_1" });
+        expect(env("VARIABLE")).to.equal("VALUE_1");
     });
 });

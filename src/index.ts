@@ -1,3 +1,18 @@
+/*
+*   Allow setting a custom input source for environment variables. Defaults to
+*   process.env
+*/
+export interface IInputSource {
+    [key: string]: string | undefined;
+}
+let inputSource: IInputSource = process.env;
+export function setInputSource(newSource: IInputSource) {
+    inputSource = newSource;
+}
+
+/*
+*   Retrieve an environment variable from the input source
+*/
 export interface IBaseOptions<T> {
     parse?: (value: string) => T;
 }
@@ -8,7 +23,6 @@ export interface IRequiredOptions<T> extends IBaseOptions<T> {
 export interface IDefaultOptions<T> extends IBaseOptions<T> {
     default: string;
 }
-
 function env<T = string>(name: string, options: IRequiredOptions<T>): T;
 function env<T = string>(name: string, options: IDefaultOptions<T>): T;
 function env<T = string>(name: string, options: IBaseOptions<T>): T | undefined;
@@ -30,7 +44,7 @@ function env(name: string, options: any = {}) {
     }
 
     // Get the input value from environment variables
-    const inputValue = process.env[name];
+    const inputValue = inputSource[name];
 
     // Throw an error when:
     // - the variable is marked as required
@@ -49,10 +63,12 @@ function env(name: string, options: any = {}) {
 
     // Get the value or one of the defaults
     const valueOrDefaultOrUndefined =
-        inputValue || options.default || options.nonProductionDefault;
+        inputValue !== undefined
+            ? inputValue
+            : options.default || options.nonProductionDefault;
 
     // Return the possibly-parsed value
-    return options.parse && valueOrDefaultOrUndefined
+    return options.parse && valueOrDefaultOrUndefined !== undefined
         ? options.parse(valueOrDefaultOrUndefined)
         : valueOrDefaultOrUndefined;
 }
