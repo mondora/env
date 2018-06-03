@@ -1,3 +1,14 @@
+## 1.3.0 (June 3, 2018)
+
+Features:
+
+- allow setting a custom input source from which environment variables are
+  retrieved (the default input source is `process.env`)
+
+Fixes:
+
+- correctly handle variables whose value is the empty string
+
 ## 1.2.0 (June 3, 2018)
 
 Features:
